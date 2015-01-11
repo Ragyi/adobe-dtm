@@ -155,7 +155,7 @@ $GLOBALS["SDIDTM_includefieldtexts"] = array(
 	),
 	SDIDTM_OPTION_INCLUDE_COMMENTS    => array(
 		"label"       => __( "Comments", SDIDTM_TEXTDOMAIN ),
-		"description" => __( "Check this option to include if a post has comments along with the # of comments.", SDIDTM_TEXTDOMAIN )
+		"description" => __( "Check this option to include the # of comments on a post/page.", SDIDTM_TEXTDOMAIN )
 	),
 	SDIDTM_OPTION_NAME_COMMENTS  => array(
 		"label"       => __( "", SDIDTM_TEXTDOMAIN ),

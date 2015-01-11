@@ -15,19 +15,26 @@ Adobe DTM is Adobe's tool for deploying it's Marketing Cloud tools to a website.
 
 = Data Layer =
 
-Adobe DTM for Wordpress builds a data layer variable for you. Using this you can easily insert data into your web pages to enhance the data collection.  Some items include:
+Adobe DTM for Wordpress can build a JSON data layer variable for you to enhance data collection.  The items that this plugin can insert into the data layer on the WordPress pages are:
 
-* post/page titles
-* post/page dates
-* post/page category names
-* post/page tag names
-* post/page author names
-* post types
-* post count on the current page + in the current category/tag/taxonomy
-* logged in status
-* logged in user role
-* search data
-* comments exist and comment count
+* Post/Page Type
+* Post/Page Sub Type
+* Post/Page ID
+* Post/Page Category Names
+* Post/Page Tag Names
+* Post/Page Author Names
+* Post/Page Date
+* Post/Page Title
+* Post/Page Custom Fields
+* Post/Page Count
+* Search Term
+* Number of Search Results
+* Search Origin Page
+* Logged-in Status
+* Logged-in User Role
+* Comment Count
+
+The plugin will also allow you to rename the JavaScript variable for the data layer, as well as each sub object in the data layer.
 
 == Installation ==
 
