@@ -2,14 +2,14 @@
 
 /*
 Plugin Name: Adobe DTM for Wordpress
-Version: 0.1
+Version: 1.0
 Plugin URI: http://www.searchdiscovery.com/adobe-dtm-for-wordpress/
 Description: The first Adobe Dynamic Tag Management (DTM) plugin for WordPress.
 Author: Adam Haining
 Author URI: http://www.searchdiscovery.com
 */
 
-define('SDIDTM_VERSION', '0.1');
+define('SDIDTM_VERSION', '1.0');
 define('SDIDTM_PATH', plugin_dir_path(__FILE__));
 
 $adobe_dtm_plugin_url = plugin_dir_url(__FILE__);
