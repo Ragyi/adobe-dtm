@@ -3,7 +3,7 @@ Contributors: adamlytics
 Tags: adobe dynamic tag manager, adobe dtm, dtm, tag manager, google analytics, analytics, web analytics
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 0.1
+Stable tag: 1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -41,11 +41,26 @@ There are currently no frequently asked questions.
 
 == Changelog ==
 
-There are no changes to report.
+= 1.0 =
+Out of beta with some additional features.
+1. Control over the data layer sub object names.
+1. New items in the data layer: page/post ID, page/post custom fields.
+1. Split up grouped data layer items into their own configuration.
+1. Ability to specify that DTM is already installed on the site, which will only include the data layer.
+1. Ability to disable DTM for different user types, or even for guests.
+
+= 0.1 =
+First public beta.
 
 == Upgrade Notice ==
 
-There is nothing to report.
+= 1.0 =
+New features for added customization and control.
+1. Control over the data layer sub object names.
+1. New items in the data layer: page/post ID, page/post custom fields.
+1. Split up grouped data layer items into their own configuration.
+1. Ability to specify that DTM is already installed on the site, which will only include the data layer.
+1. Ability to disable DTM for different user types, or even for guests.
 
 == Screenshots ==
 

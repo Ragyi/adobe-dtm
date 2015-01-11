@@ -6,58 +6,188 @@ define( 'SDIDTM_ADMIN_GROUP_GENERAL',     'sdidtm-admin-group-general' );
 define( 'SDIDTM_ADMIN_GROUP_DTMID',       'sdidtm-admin-group-dtm-id' );
 define( 'SDIDTM_ADMIN_GROUP_PLACEMENT',   'sdidtm-admin-code-placement' );
 define( 'SDIDTM_ADMIN_GROUP_DATALAYER',   'sdidtm-admin-group-datalayer-name' );
+define( 'SDIDTM_ADMIN_GROUP_DTM_EXISTS',   'sdidtm-admin-group-dtm-exists' );
 define( 'SDIDTM_ADMIN_GROUP_INFO',        'sdidtm-admin-group-datalayer-info' );
 define( 'SDIDTM_ADMIN_GROUP_INCLUDES',    'sdidtm-admin-group-includes' );
-define( 'SDIDTM_ADMIN_GROUP_ADVANCED',    'sdidtm-admin-group-advanced' );
+define( 'SDIDTM_ADMIN_GROUP_DISABLE_DTM',    'sdidtm-admin-group-disable-dtm' );
 define( 'SDIDTM_ADMIN_GROUP_CREDITS',     'sdidtm-admin-group-credits' );
 define( 'SDIDTM_USER_NOTICES_KEY', 'SDIDTM_user_notices_dismisses' );
 
 $GLOBALS["SDIDTM_def_user_notices_dismisses"] = array(
-	"enter-dtm-code" => false,
-	"wc-ga-plugin-warning" => false,
-	"wc-gayoast-plugin-warning" => false
+	"enter-dtm-code" => false
 );
 
 $GLOBALS["SDIDTM_includefieldtexts"] = array(
 	SDIDTM_OPTION_INCLUDE_POSTTYPE    => array(
-		"label"       => __( "Post type of current post/archive", SDIDTM_TEXTDOMAIN ),
-		"description" => __( "Check this option to include the type of the current post or archive page (post, page or any custom post type).", SDIDTM_TEXTDOMAIN )
+		"label"       => __( "Post Type", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the type of the post or archive page (post, page or any custom post type).", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_POSTTYPE    => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_POSTTYPE
+	),
+	SDIDTM_OPTION_INCLUDE_POSTSUBTYPE    => array(
+		"label"       => __( "Post Sub Type", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the sub type of the post or archive page (post, page or any custom post type).", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_POSTSUBTYPE    => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_POSTSUBTYPE
+	),
+	SDIDTM_OPTION_INCLUDE_PAGEID    => array(
+		"label"       => __( "Page ID", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the page/post ID.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_PAGEID    => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_PAGEID
 	),
 	SDIDTM_OPTION_INCLUDE_CATEGORIES  => array(
-		"label"       => __( "Category list of current post/archive", SDIDTM_TEXTDOMAIN ),
-		"description" => __( "Check this option to include the category names of the current post or archive page", SDIDTM_TEXTDOMAIN )
+		"label"       => __( "Category List", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the category names of the post or archive page", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_CATEGORIES    => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_CATEGORIES
 	),
 	SDIDTM_OPTION_INCLUDE_TAGS        => array(
-		"label"       => __( "Tags of current post", SDIDTM_TEXTDOMAIN ),
-		"description" => __( "Check this option to include the tags of the current post.", SDIDTM_TEXTDOMAIN )
+		"label"       => __( "Tags", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the tags of the post/page.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_TAGS    => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_TAGS
 	),
 	SDIDTM_OPTION_INCLUDE_AUTHOR      => array(
-		"label"       => __( "Post author name", SDIDTM_TEXTDOMAIN ),
-		"description" => __( "Check this option to include the author's name of the current post or author page.", SDIDTM_TEXTDOMAIN )
+		"label"       => __( "Author Name", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the author's name of the post/page.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_AUTHOR    => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_AUTHOR
 	),
 	SDIDTM_OPTION_INCLUDE_POSTDATE    => array(
-		"label"       => __( "Post date", SDIDTM_TEXTDOMAIN ),
-		"description" => __( "Check this option to include the date of the current post. This will include 4 dataLayer variables: full date, post year, post month, post date.", SDIDTM_TEXTDOMAIN )
+		"label"       => __( "Post Date", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the date of the post. This will be an object with 4 sub objects: date, year, month, and day.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_POSTDATE    => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_POSTDATE
 	),
 	SDIDTM_OPTION_INCLUDE_POSTTITLE   => array(
-		"label"       => __( "Post title", SDIDTM_TEXTDOMAIN ),
-		"description" => __( "Check this option to include the title of the current post.", SDIDTM_TEXTDOMAIN )
+		"label"       => __( "Post Title", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the meta title of the post/page.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_POSTTITLE    => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_POSTTITLE
+	),
+	SDIDTM_OPTION_INCLUDE_POSTCUSTOM   => array(
+		"label"       => __( "Post Custom Fields", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the custom fields of the post/page.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_POSTCUSTOM    => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_POSTCUSTOM
 	),
 	SDIDTM_OPTION_INCLUDE_POSTCOUNT   => array(
-		"label"       => __( "Post count", SDIDTM_TEXTDOMAIN ),
-		"description" => __( "Check this option to include the count of the posts currently shown on the page and the total number of posts in the category/tag/any taxonomy.", SDIDTM_TEXTDOMAIN )
+		"label"       => __( "Post Count", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the count of the posts currently shown on the page.", SDIDTM_TEXTDOMAIN )
 	),
-	SDIDTM_OPTION_INCLUDE_SEARCHDATA  => array(
-		"label"       => __( "Search data", SDIDTM_TEXTDOMAIN ),
-		"description" => __( "Check this option to include the search term, referring page URL and number of results on the search page.", SDIDTM_TEXTDOMAIN )
+	SDIDTM_OPTION_NAME_POSTCOUNT   => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_POSTCOUNT
+	),
+	SDIDTM_OPTION_INCLUDE_SEARCHTERM  => array(
+		"label"       => __( "Search Term", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the search term on the search results page.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_SEARCHTERM  => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_SEARCHTERM
+	),
+	SDIDTM_OPTION_INCLUDE_SEARCHRESULTS  => array(
+		"label"       => __( "Search Results", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the number of search results on the search results page.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_SEARCHRESULTS  => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_SEARCHRESULTS
+	),
+	SDIDTM_OPTION_INCLUDE_SEARCHORIGIN  => array(
+		"label"       => __( "Search Origin", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include the search origin on the search results page.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_SEARCHORIGIN  => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_SEARCHORIGIN
 	),
 	SDIDTM_OPTION_INCLUDE_LOGGEDIN    => array(
-		"label"       => __( "Logged in status", SDIDTM_TEXTDOMAIN ),
+		"label"       => __( "Logged-in Status", SDIDTM_TEXTDOMAIN ),
 		"description" => __( "Check this option to include whether there is a logged in user on your website.", SDIDTM_TEXTDOMAIN )
 	),
+	SDIDTM_OPTION_NAME_LOGGEDIN  => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_LOGGEDIN
+	),
 	SDIDTM_OPTION_INCLUDE_USERROLE    => array(
-		"label"       => __( "Logged in user role", SDIDTM_TEXTDOMAIN ),
+		"label"       => __( "Logged-in User Role", SDIDTM_TEXTDOMAIN ),
 		"description" => __( "Check this option to include the role of the logged in user.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_USERROLE  => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_USERROLE
+	),
+	SDIDTM_OPTION_INCLUDE_COMMENTS    => array(
+		"label"       => __( "Comments", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Check this option to include if a post has comments along with the # of comments.", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_NAME_COMMENTS  => array(
+		"label"       => __( "", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "", SDIDTM_TEXTDOMAIN ),
+		"optionfieldid" => SDIDTM_OPTION_NAME_COMMENTS
+	)
+);
+
+$GLOBALS["SDIDTM_disablefieldtexts"] = array(
+	SDIDTM_OPTION_DISABLE_ADMIN    => array(
+		"label"       => __( "Administrator", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Disable DTM from loading for Administrators", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_DISABLE_EDITOR  => array(
+		"label"       => __( "Editor", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Disable DTM from loading for Editors", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_DISABLE_AUTHOR        => array(
+		"label"       => __( "Author", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Disable DTM from loading for Authors", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_DISABLE_CONTRIBUTOR      => array(
+		"label"       => __( "Contributor", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Disable DTM from loading for Contributors", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_DISABLE_SUBSCRIBER    => array(
+		"label"       => __( "Subscriber", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Disable DTM from loading for Subscribers", SDIDTM_TEXTDOMAIN )
+	),
+	SDIDTM_OPTION_DISABLE_GUEST    => array(
+		"label"       => __( "Guest", SDIDTM_TEXTDOMAIN ),
+		"description" => __( "Disable DTM from loading for Guests (not logged in)", SDIDTM_TEXTDOMAIN )
 	)
 );
 
@@ -66,13 +196,13 @@ function SDIDTM_admin_output_section( $args ) {
 
 	switch( $args["id"] ) {
 		case SDIDTM_ADMIN_GROUP_GENERAL: {
-			_e( 'This plugin is intended to be used by IT and marketing staff. <strong>Important:</strong> This plugin is still <strong>beta</strong>. It has not been tested on many websites. There might be issues with some plugins or themes!', SDIDTM_TEXTDOMAIN );
+			_e( 'This plugin is intended to be used by IT and marketing staff. &nbsp;<strong>Important:</strong> This plugin is still <strong>beta</strong>. &nbsp;It has not been tested on many websites. &nbsp;There might be issues with some plugins or themes!', SDIDTM_TEXTDOMAIN );
 
 			break;        
 		}
 		
 		case SDIDTM_ADMIN_GROUP_ADVANCED: {
-			_e( "The default JavaScript variable for the data layer is 'dataLayer'.  Change the object name here.", SDIDTM_TEXTDOMAIN );
+			_e( "The default JavaScript variable for the data layer is 'dataLayer'. &nbsp;Change the object name here.", SDIDTM_TEXTDOMAIN );
 
 			break;        
 		}
@@ -82,32 +212,35 @@ function SDIDTM_admin_output_section( $args ) {
 
 			break;        
 		}
+
+		case SDIDTM_ADMIN_GROUP_DISABLE_DTM: {
+			_e("Disable DTM from loading for anyone logged in or not logged in.&nbsp; A great feature for disabling tracking for employees, or disabling tracking for guests while the implementation is underway.");
+			break;
+		}
+
+		case SDIDTM_ADMIN_GROUP_INCLUDES: {
+			_e("Use the meta data available within WordPress to easily build a data layer that you can use with DTM. &nbsp;Check an item to add it to the data layer. &nbsp;You can also configure the name of the item in the data layer.");
+			break;
+		}
 	} // end switch
 	
 	echo '</span>';
 }
 
 function SDIDTM_admin_output_field( $args ) {
-	global $SDIDTM_options;
+	global $SDIDTM_options, $SDIDTM_defaultoptions;
 	
 	switch( $args["label_for"] ) {
 		case SDIDTM_ADMIN_GROUP_DTMID: {
-			echo '<input type="text" id="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DTM_CODE . ']" name="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DTM_CODE . ']" value="' . $SDIDTM_options[SDIDTM_OPTION_DTM_CODE] . '" size="145" /><br />' . $args["description"];
+			echo '<input type="text" id="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DTM_CODE . ']" name="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DTM_CODE . ']" value="' . $SDIDTM_options[SDIDTM_OPTION_DTM_CODE] . '" class="dtmid" /><br />' . $args["description"];
 			echo '<br /><span class="dtmid_validation_error">' . __( "There was an error saving the code embed.", SDIDTM_TEXTDOMAIN ) . '</span>';
-			
-			break;
-		}
-
-		case SDIDTM_ADMIN_GROUP_PLACEMENT: {
-			echo '<input type="radio" id="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DTM_PLACEMENT . ']_0" name="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DTM_PLACEMENT . ']" value="0" ' . ( $SDIDTM_options[SDIDTM_OPTION_DTM_PLACEMENT] == 0 ? 'checked="checked"' : '' ) . '/> ' . __( "Footer of the page (not recommended by Google, no tweak in your template required)", SDIDTM_TEXTDOMAIN ) . '<br />';
-			echo '<input type="radio" id="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DTM_PLACEMENT . ']_1" name="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DTM_PLACEMENT . ']" value="1" ' . ( $SDIDTM_options[SDIDTM_OPTION_DTM_PLACEMENT] == 1 ? 'checked="checked"' : '' ) . '/> ' . __( "Custom (needs tweak in your template)", SDIDTM_TEXTDOMAIN ) . '<br />' . $args["description"];
 			
 			break;
 		}
 		
 		case SDIDTM_ADMIN_GROUP_DATALAYER: {
 			echo '<input type="text" id="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DATALAYER_NAME . ']" name="' . SDIDTM_OPTIONS . '[' . SDIDTM_OPTION_DATALAYER_NAME . ']" value="' . $SDIDTM_options[SDIDTM_OPTION_DATALAYER_NAME] . '" /><br />' . $args["description"];
-			echo '<br /><span class="datalayername_validation_error">' . __( "This does not seems to be a valid JavaScript variable name! Please check and try again", SDIDTM_TEXTDOMAIN ) . '</span>';
+			echo '<br /><span class="datalayername_validation_error">' . __( "This does not seems to be a valid JavaScript variable name! &nbsp;Please check and try again", SDIDTM_TEXTDOMAIN ) . '</span>';
 			
 			break;
 		}
@@ -132,10 +265,22 @@ function SDIDTM_admin_output_field( $args ) {
 					break;
 				}
 
+				case "string": {
+					$optval = trim($optval);
+					if(!$optval || $optval == ''){
+						$optval = $SDIDTM_defaultoptions[$args["optionfieldid"]];
+					}
+					echo '<input type="text" id="' . SDIDTM_OPTIONS . '[' . $args["optionfieldid"] . ']" name="' . SDIDTM_OPTIONS . '[' . $args["optionfieldid"] . ']" value="' . esc_attr( $optval ) . '" size="40" />';
+					if($args["description"]){
+						echo '<br />' . $args["description"];
+					}
+					break;
+				}
+
 				default : {
 					echo '<input type="text" id="' . SDIDTM_OPTIONS . '[' . $args["optionfieldid"] . ']" name="' . SDIDTM_OPTIONS . '[' . $args["optionfieldid"] . ']" value="' . esc_attr( $optval ) . '" size="80" /><br />' . $args["description"];
 				}
-			} // end switch gettype optval
+			}
 		} 
 	} // end switch
 }
@@ -155,13 +300,13 @@ function SDIDTM_sanitize_options($options) {
 			$output[$optionname] = (boolean) $newoptionvalue;
 
 		// DTM code or dataLayer variable name
-		} else if ( ( $optionname == SDIDTM_OPTION_DTM_CODE ) || ( $optionname == SDIDTM_OPTION_DATALAYER_NAME ) ) {
+		} 
+		else if (  substr($optionname, 0, 8) == "disable-" ) {
+			$output[$optionname] = (boolean) $newoptionvalue;
+		}
+		else if ( ( $optionname == SDIDTM_OPTION_DTM_CODE ) || ( $optionname == SDIDTM_OPTION_DATALAYER_NAME ) ) {
 			$newoptionvalue = trim($newoptionvalue);
 			$output[$optionname] = $newoptionvalue;
-
-		// scroll tracking content ID
-		} else if ( $optionname == SDIDTM_OPTION_SCROLLER_CONTENTID ) {
-			$output[$optionname] = trim( str_replace( "#", "", $newoptionvalue ) );
 		// anything else
 		} else {
 			switch( gettype($optionvalue)) {
@@ -189,12 +334,13 @@ function SDIDTM_sanitize_options($options) {
 
 function SDIDTM_admin_init() {
 	global $SDIDTM_includefieldtexts;
+	global $SDIDTM_disablefieldtexts;
 	
 	register_setting( SDIDTM_ADMIN_GROUP, SDIDTM_OPTIONS, "SDIDTM_sanitize_options" );
 	
 	add_settings_section(
 		SDIDTM_ADMIN_GROUP_GENERAL,
-		__( 'DTM Information', SDIDTM_TEXTDOMAIN ),
+		__( 'DTM Configuration', SDIDTM_TEXTDOMAIN ),
 		'SDIDTM_admin_output_section',
 		SDIDTM_ADMINSLUG
 	);
@@ -208,6 +354,31 @@ function SDIDTM_admin_init() {
 		array(
 			"label_for" => SDIDTM_ADMIN_GROUP_DTMID,
 			"description" => __( "Enter only the src of your embed code here.", SDIDTM_TEXTDOMAIN )
+		)
+	);
+
+	add_settings_field(
+		SDIDTM_ADMIN_GROUP_DTM_EXISTS,
+		__('DTM Already on Page', SDIDTM_TEXTDOMAIN),
+		'SDIDTM_admin_output_field',
+		SDIDTM_ADMINSLUG,
+		SDIDTM_ADMIN_GROUP_GENERAL,
+		array(
+			"label_for" => SDIDTM_ADMIN_GROUP_DTM_EXISTS,
+			"description" => __( "DTM is already installed on the site, only add the data layer.", SDIDTM_TEXTDOMAIN ),
+				"optionfieldid" => SDIDTM_OPTION_DTM_EXISTS
+		)
+	);
+
+	add_settings_field(
+		SDIDTM_ADMIN_GROUP_DATALAYER,
+		__( 'Data layer variable name', SDIDTM_TEXTDOMAIN ),
+		'SDIDTM_admin_output_field',
+		SDIDTM_ADMINSLUG,
+		SDIDTM_ADMIN_GROUP_GENERAL,
+		array(
+			"label_for" => SDIDTM_ADMIN_GROUP_DATALAYER,
+			"description" => __( "Rename the data layer variable name. &nbsp;Default is 'dataLayer'.", SDIDTM_TEXTDOMAIN )
 		)
 	);
 
@@ -234,23 +405,26 @@ function SDIDTM_admin_init() {
 	}
 
 	add_settings_section(
-		SDIDTM_ADMIN_GROUP_ADVANCED,
-		__( 'Advanced', SDIDTM_TEXTDOMAIN ),
+		SDIDTM_ADMIN_GROUP_DISABLE_DTM,
+		__( 'Disable DTM for Logged In Users', SDIDTM_TEXTDOMAIN ),
 		'SDIDTM_admin_output_section',
 		SDIDTM_ADMINSLUG
 	);
 
-	add_settings_field(
-		SDIDTM_ADMIN_GROUP_DATALAYER,
-		__( 'dataLayer variable name', SDIDTM_TEXTDOMAIN ),
-		'SDIDTM_admin_output_field',
-		SDIDTM_ADMINSLUG,
-		SDIDTM_ADMIN_GROUP_ADVANCED,
-		array(
-			"label_for" => SDIDTM_ADMIN_GROUP_DATALAYER,
-			"description" => __( "In some cases you need to rename the data layer variable. You can enter the new name here. Leave blank for default name: dataLayer", SDIDTM_TEXTDOMAIN )
-		)
-	);
+	foreach($SDIDTM_disablefieldtexts as $fieldid => $fielddata) {
+		add_settings_field(
+			"sdidtm-admin-" . $fieldid . "-id",
+			$fielddata["label"],
+			'SDIDTM_admin_output_field',
+			SDIDTM_ADMINSLUG,
+			SDIDTM_ADMIN_GROUP_DISABLE_DTM,
+			array(
+				"label_for" => "sdidtm-disable[" . $fieldid . "]",
+				"description" => $fielddata["description"],
+				"optionfieldid" => $fieldid
+			)
+		);
+	}
 
 	add_settings_section(
 		SDIDTM_ADMIN_GROUP_CREDITS,
@@ -329,6 +503,9 @@ function SDIDTM_admin_head() {
 		display: none;
 		color: #c00;
 		font-weight: bold;
+	}
+	.dtmid {
+		width: 100%;
 	}
 </style>
 <script type="text/javascript">
