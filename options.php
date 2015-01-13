@@ -1,12 +1,4 @@
 <?php
-/**
-* Class and Function List:
-* Function list:
-* - SDIDTM_reload_options()
-* - sdidtm_debug_file()
-* Classes list:
-*/
-
 define('SDIDTM_OPTIONS', 'sdidtm-options');
 define('SDIDTM_OPTION_DTM_CODE', 'dtm-code');
 define('SDIDTM_OPTION_DATALAYER_NAME', 'dtm-datalayer-variable-name');
@@ -120,14 +112,6 @@ function SDIDTM_reload_options() {
   }
   
   return array_merge($SDIDTM_defaultoptions, $storedoptions);
-}
-
-function sdidtm_debug_file($debug_data) {
-  $fp = fopen(dirname(__FILE__) . "/" . date("Y-m-d-H-i-s-u") . ".txt", "w");
-  if ($fp) {
-    fwrite($fp, $debug_data);
-    fclose($fp);
-  }
 }
 
 $SDIDTM_options = SDIDTM_reload_options();
