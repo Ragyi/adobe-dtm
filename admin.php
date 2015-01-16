@@ -165,31 +165,11 @@ function SDIDTM_add_admin_page() {
 	global $dtm;
 	add_options_page(
 		__( 'Adobe DTM for WordPress settings' ),
-		__( 'Adobe DTM', SDIDTM_TEXTDOMAIN ),
+		__( 'Adobe DTM' ),
 		'manage_options',
 		$dtm['slug'],
 		'SDIDTM_show_admin_page'
 	);
-}
-
-function SDIDTM_add_admin_js($hook) {
-	global $sdidtm_plugin_url, $dtm;
-	
-	if ( $hook == "settings_page_" . $dtm['slug'] ) {
-		wp_register_script( "admin-subtabs", $sdidtm_url . "js/admin-subtabs.js" );
-
-		$subtabtexts = array(
-			"posttabtitle" => __( "Posts" ),
-			"searchtabtitle" => __( "Search" ),
-			"visitortabtitle" => __( "Visitors" )
-		);
-		wp_localize_script( "admin-subtabs", 'sdidtm', $subtabtexts );
-		wp_enqueue_script( "admin-subtabs" );
-
-		wp_enqueue_script( "admin-tabcreator", $sdidtm_plugin_url . "js/admin-tabcreator.js", array( "jquery-core" ), "1.0" );
-
-		wp_enqueue_style( "sdidtm-validate", $sdidtm_plugin_url . "css/admin-sdidtm.css", array(), "1.0" );
-	}
 }
 
 add_action( 'admin_init', 'SDIDTM_admin_init' );
