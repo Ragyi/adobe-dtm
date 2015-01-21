@@ -11,7 +11,7 @@ The Adobe DTM for WordPress plugin is the first WordPress plugin dedicated to se
 
 == Description ==
 
-Adobe DTM is Adobe's tool for deploying it's Marketing Cloud tools to a website.  The Adobe DTM for WordPress plugin is the first WordPress plugin dedicated to setting up and configuring Adobe DTM on WordPress.  This plugin will install the necessary DTM code on your WordPress site, with the option to have a customizable JSON data layer automatically built from your site's page and post data.
+Adobe DTM is Adobe's tool for deploying it's Marketing Cloud tools or any other tags to a website.  The Adobe DTM for WordPress plugin is the first WordPress plugin dedicated to setting up and configuring Adobe DTM on WordPress.  This plugin will install the necessary DTM code on your WordPress site, with the option to have a customizable JSON data layer automatically built from your site's page and post data.
 
 = Data Layer =
 
